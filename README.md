@@ -32,3 +32,6 @@ Issue/ Politicia
 Slate
 - name
 - election_cycle
+
+Technology that I am attempting to use.
+1- 
