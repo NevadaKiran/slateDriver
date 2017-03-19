@@ -1,0 +1,8 @@
+{:uriI"ƒfile://app/assets/javascripts/views/home.html?type=text/ng-html&id=77d31b50c30c187ebdf4038e4cb93f564693ddddc0097d54be9513f834e6b2aa:ET:load_pathI"app/assets/javascripts;T:filenameI"+app/assets/javascripts/views/home.html;T:	nameI"views/home;T:logical_pathI"views/home.html;T:content_typeI"text/ng-html;T:sourceI"v<div class="col-lg-8 col-lg-offset-2">
+<h1>{{hello}}</h1>
+<h3 ng-if="user">Welcome, {{user.username}}</h3>
+</div>;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"8processors:type=text/ng-html&file_type=text/ng-html;TTI"9file-digest://app/assets/javascripts/views/home.html;TTF:charsetI"
+utf-8;F:digest"%d†²s¦ß²nŸAâcbÅUÄ"¾¹v­P1áÚÌu$:lengthiv:dependencies_digest"%QP=6ù"p%˜Ÿmh«É¹Š=ÏÊò_OC*·ˆ:idI"E77d31b50c30c187ebdf4038e4cb93f564693ddddc0097d54be9513f834e6b2aa;F:
+mtimel+ØÌX

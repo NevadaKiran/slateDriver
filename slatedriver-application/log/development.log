@@ -1,0 +1,1603 @@
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20170318003410)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170318003410"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUsernametoUsers (20170318003500)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "username" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170318003500"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-03-18 06:48:21 UTC], ["updated_at", 2017-03-18 06:48:21 UTC]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/" for ::1 at 2017-03-17 23:48:42 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (4705.8ms)
+Completed 200 OK in 4719ms (Views: 4718.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-17 23:48:48 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2017-03-17 23:51:28 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (428.4ms)
+Completed 200 OK in 439ms (Views: 438.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-17 23:51:29 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-17 23:51:49 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"k@k.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"k@k.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "k@k.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 9ms (ActiveRecord: 1.8ms)
+
+
+Started POST "/users.json" for ::1 at 2017-03-17 23:52:23 -0700
+Processing by Devise::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"k@k.com", "username"=>"koty", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"k@k.com", "username"=>"koty", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "k@k.com"], ["LIMIT", 1]]
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "k@k.com"], ["encrypted_password", "$2a$11$b9FBoggBkx1wAzydtMg8FO83eor1l5bIKKy2dmXSFdq0Y5tyONZMO"], ["created_at", 2017-03-18 06:52:23 UTC], ["updated_at", 2017-03-18 06:52:23 UTC], ["username", "koty"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", 2017-03-18 06:52:23 UTC], ["last_sign_in_at", 2017-03-18 06:52:23 UTC], ["current_sign_in_ip", "::1"], ["last_sign_in_ip", "::1"], ["updated_at", 2017-03-18 06:52:23 UTC], ["id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 201 Created in 239ms (Views: 17.5ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 10:39:47 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (395.3ms)
+Completed 200 OK in 411ms (Views: 409.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 10:39:47 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.42ms)
+Completed 201 Created in 26ms (Views: 2.0ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/users/sign_out.json" for ::1 at 2017-03-18 10:40:02 -0700
+Processing by Devise::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 8ms (ActiveRecord: 0.4ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 10:40:08 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 10:40:37 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"password"=>"[FILTERED]", "email"=>"k@k.com"}, "session"=>{"user"=>{"password"=>"[FILTERED]", "email"=>"k@k.com"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "k@k.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2017-03-18 17:40:37 UTC], ["sign_in_count", 2], ["updated_at", 2017-03-18 17:40:37 UTC], ["id", 1]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+Completed 201 Created in 145ms (Views: 0.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 10:41:57 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (374.2ms)
+Completed 200 OK in 393ms (Views: 392.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 10:41:58 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 13ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 10:43:01 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (306.1ms)
+Completed 200 OK in 325ms (Views: 325.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 10:43:02 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+Completed 201 Created in 11ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 10:44:24 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (329.8ms)
+Completed 200 OK in 337ms (Views: 337.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 10:44:25 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 11ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 12:10:03 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (632.4ms)
+Completed 200 OK in 643ms (Views: 642.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 12:10:04 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 201 Created in 17ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out.json" for ::1 at 2017-03-18 12:17:13 -0700
+Processing by Devise::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 14:03:07 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (253.2ms)
+Completed 200 OK in 268ms (Views: 266.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 14:03:08 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 14:03:19 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"k@k.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"k@k.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "k@k.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2017-03-18 21:03:19 UTC], ["last_sign_in_at", 2017-03-18 17:40:37 UTC], ["sign_in_count", 3], ["updated_at", 2017-03-18 21:03:19 UTC], ["id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 201 Created in 164ms (Views: 1.2ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 14:03:39 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (142.9ms)
+Completed 200 OK in 153ms (Views: 152.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 14:03:40 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 201 Created in 16ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 14:04:07 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (346.7ms)
+Completed 200 OK in 362ms (Views: 362.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 14:04:08 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 201 Created in 15ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 16:42:48 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (450.1ms)
+Completed 200 OK in 463ms (Views: 462.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 16:42:49 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 201 Created in 40ms (Views: 2.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 16:45:15 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (367.9ms)
+Completed 200 OK in 375ms (Views: 374.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 16:45:15 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 201 Created in 34ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 16:46:53 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (342.8ms)
+Completed 200 OK in 352ms (Views: 352.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 16:46:54 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 13ms (Views: 0.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 16:46:56 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (85.7ms)
+Completed 200 OK in 95ms (Views: 94.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 16:46:56 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 201 Created in 14ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 16:47:37 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (339.9ms)
+Completed 200 OK in 349ms (Views: 349.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 16:47:38 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 201 Created in 14ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 16:48:40 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (348.2ms)
+Completed 200 OK in 357ms (Views: 357.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 16:48:40 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 201 Created in 15ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 17:36:02 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (393.9ms)
+Completed 200 OK in 403ms (Views: 403.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 17:36:03 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 201 Created in 15ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 17:36:45 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (372.8ms)
+Completed 200 OK in 384ms (Views: 384.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 17:36:46 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 16ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 18:03:18 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (350.9ms)
+Completed 200 OK in 359ms (Views: 358.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 18:03:19 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.69ms)
+Completed 201 Created in 14ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 18:08:42 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (368.1ms)
+Completed 200 OK in 376ms (Views: 375.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 18:08:43 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 16ms (Views: 1.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 18:41:18 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (395.6ms)
+Completed 200 OK in 407ms (Views: 406.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 18:41:19 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+Completed 201 Created in 17ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 18:45:42 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (399.1ms)
+Completed 200 OK in 408ms (Views: 408.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 18:45:43 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 15ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 18:47:21 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (347.0ms)
+Completed 200 OK in 356ms (Views: 355.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 18:47:22 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 18ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 18:50:44 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (507.2ms)
+Completed 200 OK in 516ms (Views: 516.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 18:50:45 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 15ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 18:51:05 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (382.1ms)
+Completed 200 OK in 388ms (Views: 388.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 18:51:06 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 18:53:11 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (398.8ms)
+Completed 200 OK in 408ms (Views: 407.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 18:53:12 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 201 Created in 26ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:23:09 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (96.7ms)
+Completed 200 OK in 107ms (Views: 107.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:23:09 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 16ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:24:25 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (87.6ms)
+Completed 200 OK in 94ms (Views: 93.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:24:26 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 201 Created in 14ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:27:10 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (92.7ms)
+Completed 200 OK in 101ms (Views: 101.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:27:11 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 201 Created in 15ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:29:53 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (93.9ms)
+Completed 200 OK in 103ms (Views: 102.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:29:54 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:33:56 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (96.9ms)
+Completed 200 OK in 107ms (Views: 106.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:33:57 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 13ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:44:42 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (334.3ms)
+Completed 200 OK in 344ms (Views: 344.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:44:43 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:51:05 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (357.3ms)
+Completed 200 OK in 369ms (Views: 369.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:51:06 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:53:23 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (359.5ms)
+Completed 200 OK in 368ms (Views: 368.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:53:24 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:54:50 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (359.5ms)
+Completed 200 OK in 375ms (Views: 375.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:54:51 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 201 Created in 13ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:57:49 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (88.4ms)
+Completed 200 OK in 99ms (Views: 98.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:57:50 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 201 Created in 19ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 19:58:05 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (338.5ms)
+Completed 200 OK in 347ms (Views: 346.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 19:58:05 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 201 Created in 19ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:03:42 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (354.4ms)
+Completed 200 OK in 364ms (Views: 363.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:03:43 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 15ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:06:17 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (341.4ms)
+Completed 200 OK in 354ms (Views: 354.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:06:18 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 201 Created in 15ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:07:31 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (353.5ms)
+Completed 200 OK in 363ms (Views: 363.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:07:32 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 201 Created in 15ms (Views: 1.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:29:15 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (399.0ms)
+Completed 200 OK in 409ms (Views: 408.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:29:16 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 17ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:33:51 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1852.3ms)
+Completed 200 OK in 1864ms (Views: 1863.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:33:53 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 12ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:34:36 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1859.7ms)
+Completed 200 OK in 1901ms (Views: 1900.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:34:39 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 201 Created in 17ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:37:47 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1575.2ms)
+Completed 200 OK in 1584ms (Views: 1584.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:37:49 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.42ms)
+Completed 201 Created in 17ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:47:17 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1748.9ms)
+Completed 200 OK in 1763ms (Views: 1762.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:47:19 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:48:00 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1800.7ms)
+Completed 200 OK in 1812ms (Views: 1812.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:48:02 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 201 Created in 14ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:51:32 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (94.1ms)
+Completed 200 OK in 103ms (Views: 103.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:51:32 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 20:57:53 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (384.0ms)
+Completed 200 OK in 395ms (Views: 395.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 20:57:54 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:01:37 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (401.1ms)
+Completed 200 OK in 411ms (Views: 410.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:01:38 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 201 Created in 16ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:04:10 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (341.9ms)
+Completed 200 OK in 354ms (Views: 353.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:04:11 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 201 Created in 16ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:04:59 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (353.5ms)
+Completed 200 OK in 363ms (Views: 362.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:05:00 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 201 Created in 15ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:07:37 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (93.0ms)
+Completed 200 OK in 105ms (Views: 104.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:07:38 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:08:14 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (350.9ms)
+Completed 200 OK in 362ms (Views: 361.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:08:15 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 201 Created in 15ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:10:32 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (362.7ms)
+Completed 200 OK in 372ms (Views: 372.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:10:33 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 13ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:11:56 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1690.5ms)
+Completed 200 OK in 1698ms (Views: 1698.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:11:58 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+Completed 201 Created in 13ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:13:01 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1859.9ms)
+Completed 200 OK in 1869ms (Views: 1868.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:13:03 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:13:19 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1834.6ms)
+Completed 200 OK in 1846ms (Views: 1845.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:13:22 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:14:07 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (1840.5ms)
+Completed 200 OK in 1849ms (Views: 1849.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:14:09 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 15ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:16:53 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (370.4ms)
+Completed 200 OK in 379ms (Views: 378.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:16:54 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+Completed 201 Created in 13ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:18:33 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (321.2ms)
+Completed 200 OK in 333ms (Views: 332.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:18:34 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 14ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:20:09 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (402.3ms)
+Completed 200 OK in 412ms (Views: 412.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:20:10 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 201 Created in 13ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:21:12 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (343.8ms)
+Completed 200 OK in 355ms (Views: 354.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:21:13 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+Completed 201 Created in 19ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:22:22 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (388.9ms)
+Completed 200 OK in 400ms (Views: 399.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:22:23 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 201 Created in 16ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 21:22:40 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (336.4ms)
+Completed 200 OK in 343ms (Views: 342.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 21:22:41 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSlates (20170319050350)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "slates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "president" varchar, "president_reasons" text, "us_senate" varchar, "us_senate_reasons" text, "us_congress" varchar, "us_congress_reasons" text, "nv_senate" varchar, "nv_senate_reasons" text, "nv_assembly" varchar, "nv_assembly_reasons" text, "city_council1" varchar, "city_council1_reasons" text, "city_council2" varchar, "city_council2_reasons" text, "judge1" varchar, "judge1_reasons" text, "judge2" varchar, "judge2_reasons" text, "judge3" varchar, "judge3_reasons" text, "issue1" varchar, "issue1_reasons" text, "issue2" varchar, "issue2_reasons" text, "issue3" varchar, "issue3_reasons" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_slates_on_user_id" ON "slates" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170319050350"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_slates_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_slates_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/" for ::1 at 2017-03-18 22:08:44 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (133.3ms)
+Completed 200 OK in 141ms (Views: 140.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 22:08:45 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 201 Created in 62ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 22:33:44 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (327.8ms)
+Completed 200 OK in 334ms (Views: 333.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 22:38:40 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (370.2ms)
+Completed 200 OK in 380ms (Views: 379.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 22:41:48 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (100.7ms)
+Completed 200 OK in 112ms (Views: 112.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 22:44:22 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (340.9ms)
+Completed 200 OK in 353ms (Views: 352.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 22:44:23 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 201 Created in 38ms (Views: 4.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 22:53:21 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (425.8ms)
+Completed 200 OK in 435ms (Views: 434.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 22:53:22 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 201 Created in 13ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 22:54:00 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (345.1ms)
+Completed 200 OK in 386ms (Views: 386.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 22:54:01 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 201 Created in 15ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/slates.json" for ::1 at 2017-03-18 22:57:31 -0700
+Processing by SlatesController#create as JSON
+  Parameters: {"president"=>"hello", "president_reasons"=>"world", "us_senate"=>"rand", "us_senate_reasons"=>"liberty", "us_congress"=>"amy", "us_ongress_reasons"=>"she's hot", "nv_senate"=>"bundy", "nv_senate_reasons"=>"he likes weed", "nv_assembly"=>"jen", "nv_assembly_reasons"=>"I like jen", "city_council1"=>"khan", "city_council1_reasons"=>"strong beard", "city_council2"=>"west", "city_council2_reasons"=>"batman", "judge1"=>"dredd", "judge1_reasons"=>"harshe", "judge2"=>"curry", "judge2_reasons"=>"bible", "judge3"=>"koty", "judge3_reasons"=>"punishment", "issue1"=>"legal weed", "issue1_reasons"=>"I like it", "issue2"=>"gun rights", "issue2_reasons"=>"i like guns", "issue3"=>"no taxes", "issue3_reasons"=>"taxation is theft", "slate"=>{"president"=>"hello", "president_reasons"=>"world", "us_senate"=>"rand", "us_senate_reasons"=>"liberty", "us_congress"=>"amy", "nv_senate"=>"bundy", "nv_senate_reasons"=>"he likes weed", "nv_assembly"=>"jen", "nv_assembly_reasons"=>"I like jen", "city_council1"=>"khan", "city_council1_reasons"=>"strong beard", "city_council2"=>"west", "city_council2_reasons"=>"batman", "judge1"=>"dredd", "judge1_reasons"=>"harshe", "judge2"=>"curry", "judge2_reasons"=>"bible", "judge3"=>"koty", "judge3_reasons"=>"punishment", "issue1"=>"legal weed", "issue1_reasons"=>"I like it", "issue2"=>"gun rights", "issue2_reasons"=>"i like guns", "issue3"=>"no taxes", "issue3_reasons"=>"taxation is theft"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "slates" ("user_id", "president", "president_reasons", "us_senate", "us_senate_reasons", "us_congress", "nv_senate", "nv_senate_reasons", "nv_assembly", "nv_assembly_reasons", "city_council1", "city_council1_reasons", "city_council2", "city_council2_reasons", "judge1", "judge1_reasons", "judge2", "judge2_reasons", "judge3", "judge3_reasons", "issue1", "issue1_reasons", "issue2", "issue2_reasons", "issue3", "issue3_reasons", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["president", "hello"], ["president_reasons", "world"], ["us_senate", "rand"], ["us_senate_reasons", "liberty"], ["us_congress", "amy"], ["nv_senate", "bundy"], ["nv_senate_reasons", "he likes weed"], ["nv_assembly", "jen"], ["nv_assembly_reasons", "I like jen"], ["city_council1", "khan"], ["city_council1_reasons", "strong beard"], ["city_council2", "west"], ["city_council2_reasons", "batman"], ["judge1", "dredd"], ["judge1_reasons", "harshe"], ["judge2", "curry"], ["judge2_reasons", "bible"], ["judge3", "koty"], ["judge3_reasons", "punishment"], ["issue1", "legal weed"], ["issue1_reasons", "I like it"], ["issue2", "gun rights"], ["issue2_reasons", "i like guns"], ["issue3", "no taxes"], ["issue3_reasons", "taxation is theft"], ["created_at", 2017-03-19 05:57:31 UTC], ["updated_at", 2017-03-19 05:57:31 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.36ms)
+Completed 200 OK in 64ms (Views: 15.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/slates/1.json" for ::1 at 2017-03-18 22:57:31 -0700
+Processing by SlatesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.5ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? AND "slates"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.13ms)
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/users/sign_out.json" for ::1 at 2017-03-18 22:58:29 -0700
+Processing by Devise::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 5ms (ActiveRecord: 0.6ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 22:58:40 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 22:58:42 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"k@k.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"k@k.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "k@k.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2017-03-19 05:58:42 UTC], ["last_sign_in_at", 2017-03-18 21:03:19 UTC], ["sign_in_count", 4], ["updated_at", 2017-03-19 05:58:42 UTC], ["id", 1]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 155ms (Views: 0.8ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 23:01:38 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (112.4ms)
+Completed 200 OK in 122ms (Views: 121.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 23:01:39 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 14ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 23:01:52 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (91.6ms)
+Completed 200 OK in 101ms (Views: 100.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 23:01:53 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+Completed 201 Created in 23ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-03-18 23:02:40 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (449.0ms)
+Completed 200 OK in 462ms (Views: 461.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-18 23:02:41 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 201 Created in 13ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-03-19 01:27:47 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (491.8ms)
+Completed 200 OK in 502ms (Views: 501.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 01:27:48 -0700
+Processing by SlatesController#latest as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.4ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? ORDER BY "slates"."id" DESC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+Started POST "/users/sign_in.json" for ::1 at 2017-03-19 01:27:48 -0700
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.16ms)
+Completed 200 OK in 71ms (Views: 16.5ms | ActiveRecord: 2.2ms)
+
+
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 01:27:48 -0700
+Processing by SlatesController#latest as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (3.0ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? ORDER BY "slates"."id" DESC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (19.01ms)
+Completed 200 OK in 97ms (Views: 20.9ms | ActiveRecord: 3.6ms)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.5ms)
+Completed 201 Created in 262ms (Views: 168.7ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/slates.json" for ::1 at 2017-03-19 01:28:37 -0700
+Processing by SlatesController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (1.2ms)[0m  [1m[34mSELECT "slates".* FROM "slates" WHERE "slates"."user_id" = ?[0m  [["user_id", 1]]
+No serializer found for resource: #<Slate id: 1, user_id: 1, president: "hello", president_reasons: "world", us_senate: "rand", us_senate_reasons: "liberty", us_congress: "amy", us_congress_reasons: nil, nv_senate: "bundy", nv_senate_reasons: "he likes weed", nv_assembly: "jen", nv_assembly_reasons: "I like jen", city_council1: "khan", city_council1_reasons: "strong beard", city_council2: "west", city_council2_reasons: "batman", judge1: "dredd", judge1_reasons: "harshe", judge2: "curry", judge2_reasons: "bible", judge3: "koty", judge3_reasons: "punishment", issue1: "legal weed", issue1_reasons: "I like it", issue2: "gun rights", issue2_reasons: "i like guns", issue3: "no taxes", issue3_reasons: "taxation is theft", created_at: "2017-03-19 05:57:31", updated_at: "2017-03-19 05:57:31">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Slate::ActiveRecord_Associations_CollectionProxy (0.98ms)
+Completed 200 OK in 28ms (Views: 14.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 01:28:42 -0700
+Processing by SlatesController#latest as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (2.1ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? ORDER BY "slates"."id" DESC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (6.07ms)
+Completed 200 OK in 17ms (Views: 7.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/slates.json" for ::1 at 2017-03-19 01:28:43 -0700
+Processing by SlatesController#index as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.3ms)[0m  [1m[34mSELECT "slates".* FROM "slates" WHERE "slates"."user_id" = ?[0m  [["user_id", 1]]
+No serializer found for resource: #<Slate id: 1, user_id: 1, president: "hello", president_reasons: "world", us_senate: "rand", us_senate_reasons: "liberty", us_congress: "amy", us_congress_reasons: nil, nv_senate: "bundy", nv_senate_reasons: "he likes weed", nv_assembly: "jen", nv_assembly_reasons: "I like jen", city_council1: "khan", city_council1_reasons: "strong beard", city_council2: "west", city_council2_reasons: "batman", judge1: "dredd", judge1_reasons: "harshe", judge2: "curry", judge2_reasons: "bible", judge3: "koty", judge3_reasons: "punishment", issue1: "legal weed", issue1_reasons: "I like it", issue2: "gun rights", issue2_reasons: "i like guns", issue3: "no taxes", issue3_reasons: "taxation is theft", created_at: "2017-03-19 05:57:31", updated_at: "2017-03-19 05:57:31">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Slate::ActiveRecord_Associations_CollectionProxy (1.86ms)
+Completed 200 OK in 13ms (Views: 8.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/slates.json" for ::1 at 2017-03-19 01:28:55 -0700
+Processing by SlatesController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.2ms)[0m  [1m[34mSELECT "slates".* FROM "slates" WHERE "slates"."user_id" = ?[0m  [["user_id", 1]]
+No serializer found for resource: #<Slate id: 1, user_id: 1, president: "hello", president_reasons: "world", us_senate: "rand", us_senate_reasons: "liberty", us_congress: "amy", us_congress_reasons: nil, nv_senate: "bundy", nv_senate_reasons: "he likes weed", nv_assembly: "jen", nv_assembly_reasons: "I like jen", city_council1: "khan", city_council1_reasons: "strong beard", city_council2: "west", city_council2_reasons: "batman", judge1: "dredd", judge1_reasons: "harshe", judge2: "curry", judge2_reasons: "bible", judge3: "koty", judge3_reasons: "punishment", issue1: "legal weed", issue1_reasons: "I like it", issue2: "gun rights", issue2_reasons: "i like guns", issue3: "no taxes", issue3_reasons: "taxation is theft", created_at: "2017-03-19 05:57:31", updated_at: "2017-03-19 05:57:31">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Slate::ActiveRecord_Associations_CollectionProxy (2.03ms)
+Completed 200 OK in 14ms (Views: 5.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/slates/1.json" for ::1 at 2017-03-19 01:29:29 -0700
+Processing by SlatesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.4ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? AND "slates"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.77ms)
+Completed 200 OK in 10ms (Views: 2.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/slates.json" for ::1 at 2017-03-19 01:29:40 -0700
+Processing by SlatesController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.2ms)[0m  [1m[34mSELECT "slates".* FROM "slates" WHERE "slates"."user_id" = ?[0m  [["user_id", 1]]
+No serializer found for resource: #<Slate id: 1, user_id: 1, president: "hello", president_reasons: "world", us_senate: "rand", us_senate_reasons: "liberty", us_congress: "amy", us_congress_reasons: nil, nv_senate: "bundy", nv_senate_reasons: "he likes weed", nv_assembly: "jen", nv_assembly_reasons: "I like jen", city_council1: "khan", city_council1_reasons: "strong beard", city_council2: "west", city_council2_reasons: "batman", judge1: "dredd", judge1_reasons: "harshe", judge2: "curry", judge2_reasons: "bible", judge3: "koty", judge3_reasons: "punishment", issue1: "legal weed", issue1_reasons: "I like it", issue2: "gun rights", issue2_reasons: "i like guns", issue3: "no taxes", issue3_reasons: "taxation is theft", created_at: "2017-03-19 05:57:31", updated_at: "2017-03-19 05:57:31">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Slate::ActiveRecord_Associations_CollectionProxy (2.27ms)
+Completed 200 OK in 46ms (Views: 41.6ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddSharedToSlates (20170319145700)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "slates" ADD "shared" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170319145700"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_slates_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_slates_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/" for ::1 at 2017-03-19 08:09:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (532.9ms)
+Completed 200 OK in 544ms (Views: 543.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 08:09:49 -0700
+Processing by SlatesController#latest as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.2ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? ORDER BY "slates"."id" DESC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+Started GET "/slates.json" for ::1 at 2017-03-19 08:09:49 -0700
+Started POST "/users/sign_in.json" for ::1 at 2017-03-19 08:09:49 -0700
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.18ms)
+Processing by SlatesController#index as JSON
+Completed 200 OK in 130ms (Views: 26.3ms | ActiveRecord: 1.9ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.2ms)[0m  [1m[34mSELECT "slates".* FROM "slates" WHERE "slates"."user_id" = ?[0m  [["user_id", 1]]
+No serializer found for resource: #<Slate id: 1, user_id: 1, president: "hello", president_reasons: "world", us_senate: "rand", us_senate_reasons: "liberty", us_congress: "amy", us_congress_reasons: nil, nv_senate: "bundy", nv_senate_reasons: "he likes weed", nv_assembly: "jen", nv_assembly_reasons: "I like jen", city_council1: "khan", city_council1_reasons: "strong beard", city_council2: "west", city_council2_reasons: "batman", judge1: "dredd", judge1_reasons: "harshe", judge2: "curry", judge2_reasons: "bible", judge3: "koty", judge3_reasons: "punishment", issue1: "legal weed", issue1_reasons: "I like it", issue2: "gun rights", issue2_reasons: "i like guns", issue3: "no taxes", issue3_reasons: "taxation is theft", created_at: "2017-03-19 05:57:31", updated_at: "2017-03-19 05:57:31", shared: false>
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Slate::ActiveRecord_Associations_CollectionProxy (0.58ms)
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 0.5ms)
+
+
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 201 Created in 40ms (Views: 11.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/slates/1.json" for ::1 at 2017-03-19 08:10:00 -0700
+Processing by SlatesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.3ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? AND "slates"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.37ms)
+Completed 200 OK in 11ms (Views: 2.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/slates.json" for ::1 at 2017-03-19 08:10:06 -0700
+Processing by SlatesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.3ms)[0m  [1m[34mSELECT "slates".* FROM "slates" WHERE "slates"."user_id" = ?[0m  [["user_id", 1]]
+No serializer found for resource: #<Slate id: 1, user_id: 1, president: "hello", president_reasons: "world", us_senate: "rand", us_senate_reasons: "liberty", us_congress: "amy", us_congress_reasons: nil, nv_senate: "bundy", nv_senate_reasons: "he likes weed", nv_assembly: "jen", nv_assembly_reasons: "I like jen", city_council1: "khan", city_council1_reasons: "strong beard", city_council2: "west", city_council2_reasons: "batman", judge1: "dredd", judge1_reasons: "harshe", judge2: "curry", judge2_reasons: "bible", judge3: "koty", judge3_reasons: "punishment", issue1: "legal weed", issue1_reasons: "I like it", issue2: "gun rights", issue2_reasons: "i like guns", issue3: "no taxes", issue3_reasons: "taxation is theft", created_at: "2017-03-19 05:57:31", updated_at: "2017-03-19 05:57:31", shared: false>
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Slate::ActiveRecord_Associations_CollectionProxy (0.71ms)
+Completed 200 OK in 8ms (Views: 3.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/slates/1.json" for ::1 at 2017-03-19 08:10:08 -0700
+Processing by SlatesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.3ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? AND "slates"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (2.13ms)
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+
+
+Started PUT "/slates/1.json" for ::1 at 2017-03-19 08:17:21 -0700
+Processing by SlatesController#update as JSON
+  Parameters: {"id"=>"1", "user_id"=>1, "president"=>"Kthulhu", "president_reasons"=>"Only he can bring us the madness we deserve", "us_senate"=>"Alien", "us_senate_reasons"=>"Face huggers know what America needs", "us_congress"=>"Predator", "us_congress_reasons"=>"Alien needs to be kept in check though", "nv_senate"=>"Kracken", "nv_senate_reasons"=>"The deep needs a keeper", "nv_assembly"=>"Azathoth", "nv_assembly_reasons"=>"Space and science need champions", "city_council1"=>"Adam Khan", "city_council1_reasons"=>"Went drinking with him, he's cool", "city_council2"=>"Adam West", "city_council2_reasons"=>"He was a good Batman", "judge1"=>"Dredd", "judge1_reasons"=>"Justice and policing all in one to save money", "judge2"=>"Mike Curry", "judge2_reasons"=>"Repent or ye shall BURN", "judge3"=>"Koty", "judge3_reasons"=>"All the guilty shall be sentenced to Angular", "issue1"=>"legal weed", "issue1_reasons"=>"I like it", "issue2"=>"gun rights", "issue2_reasons"=>"i like guns", "issue3"=>"no taxes", "issue3_reasons"=>"taxation is theft", "created_at"=>"2017-03-19T05:57:31.350Z", "updated_at"=>"2017-03-19T05:57:31.350Z", "shared"=>false, "slate"=>{"id"=>"1", "user_id"=>1, "president"=>"Kthulhu", "president_reasons"=>"Only he can bring us the madness we deserve", "us_senate"=>"Alien", "us_senate_reasons"=>"Face huggers know what America needs", "us_congress"=>"Predator", "us_congress_reasons"=>"Alien needs to be kept in check though", "nv_senate"=>"Kracken", "nv_senate_reasons"=>"The deep needs a keeper", "nv_assembly"=>"Azathoth", "nv_assembly_reasons"=>"Space and science need champions", "city_council1"=>"Adam Khan", "city_council1_reasons"=>"Went drinking with him, he's cool", "city_council2"=>"Adam West", "city_council2_reasons"=>"He was a good Batman", "judge1"=>"Dredd", "judge1_reasons"=>"Justice and policing all in one to save money", "judge2"=>"Mike Curry", "judge2_reasons"=>"Repent or ye shall BURN", "judge3"=>"Koty", "judge3_reasons"=>"All the guilty shall be sentenced to Angular", "issue1"=>"legal weed", "issue1_reasons"=>"I like it", "issue2"=>"gun rights", "issue2_reasons"=>"i like guns", "issue3"=>"no taxes", "issue3_reasons"=>"taxation is theft", "created_at"=>"2017-03-19T05:57:31.350Z", "updated_at"=>"2017-03-19T05:57:31.350Z", "shared"=>false}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.3ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? AND "slates"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, user_id, created_at, updated_at
+  [1m[35m (1.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "slates" SET "president" = ?, "president_reasons" = ?, "us_senate" = ?, "us_senate_reasons" = ?, "us_congress" = ?, "us_congress_reasons" = ?, "nv_senate" = ?, "nv_senate_reasons" = ?, "nv_assembly" = ?, "nv_assembly_reasons" = ?, "city_council1" = ?, "city_council1_reasons" = ?, "city_council2" = ?, "city_council2_reasons" = ?, "judge1" = ?, "judge1_reasons" = ?, "judge2" = ?, "judge2_reasons" = ?, "judge3" = ?, "judge3_reasons" = ?, "updated_at" = ? WHERE "slates"."id" = ?[0m  [["president", "Kthulhu"], ["president_reasons", "Only he can bring us the madness we deserve"], ["us_senate", "Alien"], ["us_senate_reasons", "Face huggers know what America needs"], ["us_congress", "Predator"], ["us_congress_reasons", "Alien needs to be kept in check though"], ["nv_senate", "Kracken"], ["nv_senate_reasons", "The deep needs a keeper"], ["nv_assembly", "Azathoth"], ["nv_assembly_reasons", "Space and science need champions"], ["city_council1", "Adam Khan"], ["city_council1_reasons", "Went drinking with him, he's cool"], ["city_council2", "Adam West"], ["city_council2_reasons", "He was a good Batman"], ["judge1", "Dredd"], ["judge1_reasons", "Justice and policing all in one to save money"], ["judge2", "Mike Curry"], ["judge2_reasons", "Repent or ye shall BURN"], ["judge3", "Koty"], ["judge3_reasons", "All the guilty shall be sentenced to Angular"], ["updated_at", 2017-03-19 15:17:21 UTC], ["id", 1]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.01ms)
+Completed 200 OK in 21ms (Views: 1.7ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/slates/1.json" for ::1 at 2017-03-19 08:17:21 -0700
+Processing by SlatesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.3ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? AND "slates"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.0ms)
+Completed 200 OK in 7ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 08:17:56 -0700
+Processing by SlatesController#latest as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.4ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? ORDER BY "slates"."id" DESC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.24ms)
+Completed 200 OK in 7ms (Views: 1.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/slates.json" for ::1 at 2017-03-19 08:18:02 -0700
+Processing by SlatesController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.1ms)[0m  [1m[34mSELECT "slates".* FROM "slates" WHERE "slates"."user_id" = ?[0m  [["user_id", 1]]
+No serializer found for resource: #<Slate id: 1, user_id: 1, president: "Kthulhu", president_reasons: "Only he can bring us the madness we deserve", us_senate: "Alien", us_senate_reasons: "Face huggers know what America needs", us_congress: "Predator", us_congress_reasons: "Alien needs to be kept in check though", nv_senate: "Kracken", nv_senate_reasons: "The deep needs a keeper", nv_assembly: "Azathoth", nv_assembly_reasons: "Space and science need champions", city_council1: "Adam Khan", city_council1_reasons: "Went drinking with him, he's cool", city_council2: "Adam West", city_council2_reasons: "He was a good Batman", judge1: "Dredd", judge1_reasons: "Justice and policing all in one to save money", judge2: "Mike Curry", judge2_reasons: "Repent or ye shall BURN", judge3: "Koty", judge3_reasons: "All the guilty shall be sentenced to Angular", issue1: "legal weed", issue1_reasons: "I like it", issue2: "gun rights", issue2_reasons: "i like guns", issue3: "no taxes", issue3_reasons: "taxation is theft", created_at: "2017-03-19 05:57:31", updated_at: "2017-03-19 15:17:21", shared: false>
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Slate::ActiveRecord_Associations_CollectionProxy (0.79ms)
+Completed 200 OK in 12ms (Views: 2.7ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/slates/1.json" for ::1 at 2017-03-19 08:18:07 -0700
+Processing by SlatesController#update as JSON
+  Parameters: {"id"=>"1", "user_id"=>1, "president"=>"Kthulhu", "president_reasons"=>"Only he can bring us the madness we deserve", "us_senate"=>"Alien", "us_senate_reasons"=>"Face huggers know what America needs", "us_congress"=>"Predator", "us_congress_reasons"=>"Alien needs to be kept in check though", "nv_senate"=>"Kracken", "nv_senate_reasons"=>"The deep needs a keeper", "nv_assembly"=>"Azathoth", "nv_assembly_reasons"=>"Space and science need champions", "city_council1"=>"Adam Khan", "city_council1_reasons"=>"Went drinking with him, he's cool", "city_council2"=>"Adam West", "city_council2_reasons"=>"He was a good Batman", "judge1"=>"Dredd", "judge1_reasons"=>"Justice and policing all in one to save money", "judge2"=>"Mike Curry", "judge2_reasons"=>"Repent or ye shall BURN", "judge3"=>"Koty", "judge3_reasons"=>"All the guilty shall be sentenced to Angular", "issue1"=>"legal weed", "issue1_reasons"=>"I like it", "issue2"=>"gun rights", "issue2_reasons"=>"i like guns", "issue3"=>"no taxes", "issue3_reasons"=>"taxation is theft", "created_at"=>"2017-03-19T05:57:31.350Z", "updated_at"=>"2017-03-19T15:17:21.875Z", "shared"=>true, "slate"=>{"id"=>"1", "user_id"=>1, "president"=>"Kthulhu", "president_reasons"=>"Only he can bring us the madness we deserve", "us_senate"=>"Alien", "us_senate_reasons"=>"Face huggers know what America needs", "us_congress"=>"Predator", "us_congress_reasons"=>"Alien needs to be kept in check though", "nv_senate"=>"Kracken", "nv_senate_reasons"=>"The deep needs a keeper", "nv_assembly"=>"Azathoth", "nv_assembly_reasons"=>"Space and science need champions", "city_council1"=>"Adam Khan", "city_council1_reasons"=>"Went drinking with him, he's cool", "city_council2"=>"Adam West", "city_council2_reasons"=>"He was a good Batman", "judge1"=>"Dredd", "judge1_reasons"=>"Justice and policing all in one to save money", "judge2"=>"Mike Curry", "judge2_reasons"=>"Repent or ye shall BURN", "judge3"=>"Koty", "judge3_reasons"=>"All the guilty shall be sentenced to Angular", "issue1"=>"legal weed", "issue1_reasons"=>"I like it", "issue2"=>"gun rights", "issue2_reasons"=>"i like guns", "issue3"=>"no taxes", "issue3_reasons"=>"taxation is theft", "created_at"=>"2017-03-19T05:57:31.350Z", "updated_at"=>"2017-03-19T15:17:21.875Z", "shared"=>true}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.2ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? AND "slates"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, user_id, created_at, updated_at
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "slates" SET "shared" = ?, "updated_at" = ? WHERE "slates"."id" = ?[0m  [["shared", true], ["updated_at", 2017-03-19 15:18:07 UTC], ["id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (0.8ms)
+Completed 200 OK in 14ms (Views: 1.6ms | ActiveRecord: 2.6ms)
+
+
+Started DELETE "/users/sign_out.json" for ::1 at 2017-03-19 08:18:15 -0700
+Processing by Devise::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 08:18:21 -0700
+Processing by SlatesController#latest as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-19 08:18:26 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-19 08:18:31 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"k@k.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"k@k.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "k@k.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2017-03-19 15:18:31 UTC], ["last_sign_in_at", 2017-03-19 05:58:42 UTC], ["sign_in_count", 5], ["updated_at", 2017-03-19 15:18:31 UTC], ["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 201 Created in 153ms (Views: 0.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 08:18:33 -0700
+Processing by SlatesController#latest as JSON
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (1.3ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? ORDER BY "slates"."id" DESC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (2.25ms)
+Completed 200 OK in 16ms (Views: 3.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2017-03-19 08:38:45 -0700
+Processing by ApplicationController#index as HTML
+  Rendering application/index.html.erb
+  Rendered application/index.html.erb (273.2ms)
+Completed 200 OK in 290ms (Views: 287.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 08:38:46 -0700
+Processing by SlatesController#latest as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.2ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? ORDER BY "slates"."id" DESC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (1.84ms)
+Completed 200 OK in 13ms (Views: 3.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-03-19 08:38:46 -0700
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{}, "session"=>{"user"=>{}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 201 Created in 15ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/slates/latest.json" for ::1 at 2017-03-19 08:38:46 -0700
+Processing by SlatesController#latest as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.9ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? ORDER BY "slates"."id" DESC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (0.65ms)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/slates.json" for ::1 at 2017-03-19 08:50:13 -0700
+Processing by SlatesController#create as JSON
+  Parameters: {"president"=>"Trump", "president_reasons"=>"Because he is a strong black woman who don't need no man", "us_senate"=>"John McCain", "us_senate_reasons"=>"Sometimes we need crotchety old crazies to start unnecessary wars", "us_congress"=>"Hillary Clinton", "us_congress_reasons"=>"A like minded person to keep McCain company", "nv_senate"=>"Ben Keickeffer", "nv_senate_reasons"=>"I want my corruption local as well as national", "nv_assembly"=>"Jill Tolles", "nv_assembly_reasons"=>"Why not elect a lobbyist? They know whats best", "city_council1"=>"Joseph Stalin", "city_council1_reasons"=>"Joseph is a broseph", "city_council2"=>"Ying", "city_council2_reasons"=>"Flash Gordon's nemesis", "judge1"=>"God", "judge1_reasons"=>"God shall Judge you", "judge2"=>"Gravity", "judge2_reasons"=>"Gravity does not forgive", "judge3"=>"Time", "judge3_reasons"=>"Time waits for no one", "issue1"=>"Tax payer funded trips to mars", "issue1_reasons"=>"Because I need to get away from you all", "issue2"=>"Build a Mediterranean Sea in Nevada", "issue2_reasons"=>"I am too lazy to travel, plus, it will be nice", "issue3"=>"Increase the number of refugees", "issue3_reasons"=>"No one in Nevada will date me.  Maybe a refugee will?", "slate"=>{"president"=>"Trump", "president_reasons"=>"Because he is a strong black woman who don't need no man", "us_senate"=>"John McCain", "us_senate_reasons"=>"Sometimes we need crotchety old crazies to start unnecessary wars", "us_congress"=>"Hillary Clinton", "us_congress_reasons"=>"A like minded person to keep McCain company", "nv_senate"=>"Ben Keickeffer", "nv_senate_reasons"=>"I want my corruption local as well as national", "nv_assembly"=>"Jill Tolles", "nv_assembly_reasons"=>"Why not elect a lobbyist? They know whats best", "city_council1"=>"Joseph Stalin", "city_council1_reasons"=>"Joseph is a broseph", "city_council2"=>"Ying", "city_council2_reasons"=>"Flash Gordon's nemesis", "judge1"=>"God", "judge1_reasons"=>"God shall Judge you", "judge2"=>"Gravity", "judge2_reasons"=>"Gravity does not forgive", "judge3"=>"Time", "judge3_reasons"=>"Time waits for no one", "issue1"=>"Tax payer funded trips to mars", "issue1_reasons"=>"Because I need to get away from you all", "issue2"=>"Build a Mediterranean Sea in Nevada", "issue2_reasons"=>"I am too lazy to travel, plus, it will be nice", "issue3"=>"Increase the number of refugees", "issue3_reasons"=>"No one in Nevada will date me.  Maybe a refugee will?"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "slates" ("user_id", "president", "president_reasons", "us_senate", "us_senate_reasons", "us_congress", "us_congress_reasons", "nv_senate", "nv_senate_reasons", "nv_assembly", "nv_assembly_reasons", "city_council1", "city_council1_reasons", "city_council2", "city_council2_reasons", "judge1", "judge1_reasons", "judge2", "judge2_reasons", "judge3", "judge3_reasons", "issue1", "issue1_reasons", "issue2", "issue2_reasons", "issue3", "issue3_reasons", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["president", "Trump"], ["president_reasons", "Because he is a strong black woman who don't need no man"], ["us_senate", "John McCain"], ["us_senate_reasons", "Sometimes we need crotchety old crazies to start unnecessary wars"], ["us_congress", "Hillary Clinton"], ["us_congress_reasons", "A like minded person to keep McCain company"], ["nv_senate", "Ben Keickeffer"], ["nv_senate_reasons", "I want my corruption local as well as national"], ["nv_assembly", "Jill Tolles"], ["nv_assembly_reasons", "Why not elect a lobbyist? They know whats best"], ["city_council1", "Joseph Stalin"], ["city_council1_reasons", "Joseph is a broseph"], ["city_council2", "Ying"], ["city_council2_reasons", "Flash Gordon's nemesis"], ["judge1", "God"], ["judge1_reasons", "God shall Judge you"], ["judge2", "Gravity"], ["judge2_reasons", "Gravity does not forgive"], ["judge3", "Time"], ["judge3_reasons", "Time waits for no one"], ["issue1", "Tax payer funded trips to mars"], ["issue1_reasons", "Because I need to get away from you all"], ["issue2", "Build a Mediterranean Sea in Nevada"], ["issue2_reasons", "I am too lazy to travel, plus, it will be nice"], ["issue3", "Increase the number of refugees"], ["issue3_reasons", "No one in Nevada will date me.  Maybe a refugee will?"], ["created_at", 2017-03-19 15:50:13 UTC], ["updated_at", 2017-03-19 15:50:13 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (4.65ms)
+Completed 200 OK in 27ms (Views: 5.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/slates/2.json" for ::1 at 2017-03-19 08:50:13 -0700
+Processing by SlatesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.9ms)[0m  [1m[34mSELECT  "slates".* FROM "slates" WHERE "slates"."user_id" = ? AND "slates"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Slate (4.14ms)
+Completed 200 OK in 11ms (Views: 4.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/slates.json" for ::1 at 2017-03-19 08:50:26 -0700
+Processing by SlatesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSlate Load (0.5ms)[0m  [1m[34mSELECT "slates".* FROM "slates" WHERE "slates"."user_id" = ?[0m  [["user_id", 1]]
+No serializer found for resource: #<Slate id: 1, user_id: 1, president: "Kthulhu", president_reasons: "Only he can bring us the madness we deserve", us_senate: "Alien", us_senate_reasons: "Face huggers know what America needs", us_congress: "Predator", us_congress_reasons: "Alien needs to be kept in check though", nv_senate: "Kracken", nv_senate_reasons: "The deep needs a keeper", nv_assembly: "Azathoth", nv_assembly_reasons: "Space and science need champions", city_council1: "Adam Khan", city_council1_reasons: "Went drinking with him, he's cool", city_council2: "Adam West", city_council2_reasons: "He was a good Batman", judge1: "Dredd", judge1_reasons: "Justice and policing all in one to save money", judge2: "Mike Curry", judge2_reasons: "Repent or ye shall BURN", judge3: "Koty", judge3_reasons: "All the guilty shall be sentenced to Angular", issue1: "legal weed", issue1_reasons: "I like it", issue2: "gun rights", issue2_reasons: "i like guns", issue3: "no taxes", issue3_reasons: "taxation is theft", created_at: "2017-03-19 05:57:31", updated_at: "2017-03-19 15:18:07", shared: true>
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Slate::ActiveRecord_Associations_CollectionProxy (3.05ms)
+Completed 200 OK in 185ms (Views: 170.9ms | ActiveRecord: 0.8ms)
+
+

@@ -1,0 +1,24 @@
+{:uriI"‡file://app/assets/javascripts/views/register.html?type=text/ng-html&id=3abcd9c38311c81f8bea19e6d8e28827d861f3b4edfa76cc7771e307cc980890:ET:load_pathI"app/assets/javascripts;T:filenameI"/app/assets/javascripts/views/register.html;T:	nameI"views/register;T:logical_pathI"views/register.html;T:content_typeI"text/ng-html;T:sourceI"Ù<div class="col-lg-8 col-lg-offset-2">
+  <h1 class="centered-text">Register</h1>
+  <form ng-submit="register()">
+    <div class="form-group">
+      <input type="email" class="form-control" placeholder="Email" ng-model="user.email" autofocus>
+    </div>
+    <div class="form-group">
+      <input type="username" class="form-control" placeholder="Username" ng-model="user.username" autofocus>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+    </div>
+    <input type="submit" class="btn btn-info" value="Log In">
+  </form>
+  <br>
+
+  <div class="panel-footer">
+    Already signed up? <a ui-sref="home.login">Log in here</a>.
+  </div>
+</div>;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"8processors:type=text/ng-html&file_type=text/ng-html;TTI"=file-digest://app/assets/javascripts/views/register.html;TTF:charsetI"
+utf-8;F:digest"%ýµµ«O5®$¶ªläÜO§÷…¥íñø˜g¨OHS—o˜:lengthiÙ:dependencies_digest"%<=ôù¥úÑ<¬"E†<¼_™›n5Ì9çÚÞOîá¡Û:idI"E3abcd9c38311c81f8bea19e6d8e28827d861f3b4edfa76cc7771e307cc980890;F:
+mtimel+ØÌX

@@ -1,0 +1,12 @@
+{:uriI"‚file://app/assets/javascripts/views/nav.html?type=text/ng-html&id=c529e2c018dbea08544488569d01948b7989d304ddccbcffee5a02f55202ec87:ET:load_pathI"app/assets/javascripts;T:filenameI"*app/assets/javascripts/views/nav.html;T:	nameI"views/nav;T:logical_pathI"views/nav.html;T:content_typeI"text/ng-html;T:sourceI"E<div class="col-lg-8 col-lg-offset-2">
+  <ul class="nav navbar-nav" >
+    <li><a ui-sref="home">Home</a></li>
+    <li ng-hide="signedIn()"><a ui-sref="login">Login</a></li>
+    <li ng-hide="signedIn()"><a ui-sref="register">Register</a></li>
+    <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
+  </ul>
+</div>;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"8processors:type=text/ng-html&file_type=text/ng-html;TTI"8file-digest://app/assets/javascripts/views/nav.html;TTF:charsetI"
+utf-8;F:digest"%•›òŞ§–2ú8ÖÒhü—G¹Mkˆbü•;çx±õ:lengthiE:dependencies_digest"%ãq¹0´ãK„V˜X&7 i«ş!ÊGŠß‰ë2k:idI"Ec529e2c018dbea08544488569d01948b7989d304ddccbcffee5a02f55202ec87;F:
+mtimel+ØÌX
