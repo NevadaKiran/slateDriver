@@ -30,11 +30,9 @@
   <p>{{slate.judge2_reasons}}</p>
   <h4>{{slate.judge3}}</h4>
   <p>{{slate.judge3_reasons}}</p>
-  <h2>ISSUES</h2>
-  <h4>{{slate.issue1}}</h4>
-  <p>{{slate.issue1_reasons}}</p>
-  <h4>{{slate.issue2}}</h4>
-  <p>{{slate.issue2_reasons}}</p>
-  <h4>{{slate.issue3}}</h4>
-  <p>{{slate.issue3_reasons}}</p>
+  <h2 ng-if="slate.issues">ISSUES</h2>
+  <div ng-repeat="issue in slate.issues">
+    <h4>{{issue.name}}</h4>
+    <p>{{issue.reasons}}</p>
+  </div>
 </div>

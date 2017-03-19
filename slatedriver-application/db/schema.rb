@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319145700) do
+ActiveRecord::Schema.define(version: 20170319182849) do
+
+  create_table "issues", force: :cascade do |t|
+    t.integer "slate_id"
+    t.string  "name"
+    t.text    "reasons"
+    t.index ["slate_id"], name: "index_issues_on_slate_id"
+  end
 
   create_table "slates", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,12 +41,6 @@ ActiveRecord::Schema.define(version: 20170319145700) do
     t.text     "judge2_reasons"
     t.string   "judge3"
     t.text     "judge3_reasons"
-    t.string   "issue1"
-    t.text     "issue1_reasons"
-    t.string   "issue2"
-    t.text     "issue2_reasons"
-    t.string   "issue3"
-    t.text     "issue3_reasons"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.boolean  "shared",                default: false
