@@ -1,0 +1,18 @@
+{:uriI"Ñfile://app/assets/javascripts/views/index.html?type=text/ng-html&id=5df50507ac688bb9737dd653150b7b24e81bb468cb51e00064a00c4109edd695:ET:load_pathI"app/assets/javascripts;T:filenameI",app/assets/javascripts/views/index.html;T:	nameI"views/index;T:logical_pathI"views/index.html;T:content_typeI"text/ng-html;T:sourceI"i<h1>INDEX OF CREATED SLATES</h1>
+
+<div class="">
+  <h1> {{user.username}}'s Created slates</h1>
+  <button ng-click="toggle()">ELECTION SLATE{{slate}}</button>
+
+  <div ng-show="mySlate">
+    <h1> {{slate.name}}</h1>
+
+    <button ng-click="slate.deleteSlate" class="delete_button"> Delete </button>
+    <button class="edit_button"> Edit </button>
+  </div>
+</div>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"8processors:type=text/ng-html&file_type=text/ng-html;TTI":file-digest://app/assets/javascripts/views/index.html;TTF:charsetI"
+utf-8;F:digest"%Y†ÿtUH06ù–€QˇhË?=Å…n<M«MÆµ≠:lengthii:dependencies_digest"%.Í>!ñäﬁıãÀÛ‰o”m%5A≈œã∏CjË·é„è:idI"E5df50507ac688bb9737dd653150b7b24e81bb468cb51e00064a00c4109edd695;F:
+mtimel+±∆ŒX
